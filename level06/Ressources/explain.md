@@ -32,11 +32,11 @@ $r = x($argv[1], $argv[2]); print $r;
 
 ## Interpretation des varaiables
 
-In PHP the input `id` and ```\`id\``` does not work because it prints the strings
+In PHP the input `id` and ``` `id` ``` does not work because it prints the strings
 to print a variable in a php string you have to put the expression in \${exp} so that the back ticks will be interpreted as an alias of shell_exec
 ${`id`}
 
-If we put ```${`id`}``` in the file, the program outputs ```${\`id\`}``` because it takes the return from file_get_contents as a string literal
+If we put ```${`id`}``` in the file, the program outputs ```${`id`}``` because it takes the return from file_get_contents as a string literal
 
 ## e modifier 
 Using the e modifier allows us to use PHP functions within the replace parameters. The following bit of code turns all letters upper case in a string of random letters by using the strtoupper() PHP function.
