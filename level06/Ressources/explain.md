@@ -32,35 +32,34 @@ $r = x($argv[1], $argv[2]); print $r;
 
 ## Interpretation des varaiables
 
-En PHP les input `id` et \`id\` ne marche pas car ca print la strings
-pour print un variable dans une string php il faut mettre l'expression dans \${exp} comme ca les back ticks seront interprété comme alias de shell_exec
+In PHP the input `id` and ```\`id\``` does not work because it prints the strings
+to print a variable in a php string you have to put the expression in \${exp} so that the back ticks will be interpreted as an alias of shell_exec
 ${`id`}
 
-Si on met \${`id`} dans le file, le program nous sort ${`id`} car il prends le retour de file_get_contents comme une string litteral
-
+If we put ```${`id`}``` in the file, the program outputs ```${\`id\`}``` because it takes the return from file_get_contents as a string literal
 
 ## e modifier 
 Using the e modifier allows us to use PHP functions within the replace parameters. The following bit of code turns all letters upper case in a string of random letters by using the strtoupper() PHP function.
 
 ## the \2 parameter
 
-Le parametre \n retourne le n match de regex ici le 2eme match donc (.*) 
+The parameter \n returns the n match of regex here the 2nd match so (.*)
 
 ## eval
-Le fonction eval en php interprete les variables dans une string, exactement ce qui nous faut pour lancer une commande. Le callback qui est appellé par preg_replace avec le modifier /e execute eval a son parametre
+The eval function in php interprets the variables in a string, exactly what we need to launch a command. The callback which is called by preg_replace with the modifier /e execute eval has its parameter
 
 # Exploit
 
-Nous devons donc tilt le premiere regex pour entrer dans la fonction callback que notre string soit eval
+We must therefore tilt the first regex to enter the callback function that our string is eval
 
 /tmp/file.txt : 
 ```
 [x ${`id`}]
 ```
 
-`[x ]` pour tilt le regex
+`[x ]` to tilt the regex 
 
-Et `(.*)` correspond à \2 qui est passé au call back donc tous ce qui est apres `[x ` sera eval
+And `(.*)` matches \2 which is passed to the call back so everything after `[x ` will be eval
 
 /tmp/file.txt : 
 ```
