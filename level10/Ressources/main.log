@@ -1,0 +1,73 @@
+   0x080486d4 <+0>:	push   ebp
+   0x080486d5 <+1>:	mov    ebp,esp
+   0x080486d7 <+3>:	and    esp,0xfffffff0
+   0x080486da <+6>:	sub    esp,0x1050
+   0x080486e0 <+12>:	mov    eax,DWORD PTR [ebp+0xc]
+   0x080486e3 <+15>:	mov    DWORD PTR [esp+0x1c],eax
+   0x080486e7 <+19>:	mov    eax,gs:0x14
+   0x080486ed <+25>:	mov    DWORD PTR [esp+0x104c],eax
+   0x080486f4 <+32>:	xor    eax,eax
+   0x080486f6 <+34>:	cmp    DWORD PTR [ebp+0x8],0x2		| comp to 2
+   0x080486fa <+38>:	jg     0x804871f <main+75>			| jump to "71f" if greater
+   0x080486fc <+40>:	mov    eax,DWORD PTR [esp+0x1c]
+   0x08048700 <+44>:	mov    edx,DWORD PTR [eax]
+   0x08048702 <+46>:	mov    eax,0x8048a40
+   0x08048707 <+51>:	mov    DWORD PTR [esp+0x4],edx
+   0x0804870b <+55>:	mov    DWORD PTR [esp],eax
+   0x0804870e <+58>:	call   0x8048520 <printf@plt>		| call "printf"
+   0x08048713 <+63>:	mov    DWORD PTR [esp],0x1
+   0x0804871a <+70>:	call   0x8048590 <exit@plt>			| call "exit"
+   0x0804871f <+75>:	mov    eax,DWORD PTR [esp+0x1c]		| jmp "71f"
+   0x08048723 <+79>:	mov    eax,DWORD PTR [eax+0x4]
+   0x08048726 <+82>:	mov    DWORD PTR [esp+0x28],eax
+   0x0804872a <+86>:	mov    eax,DWORD PTR [esp+0x1c]
+   0x0804872e <+90>:	mov    eax,DWORD PTR [eax+0x8]
+   0x08048731 <+93>:	mov    DWORD PTR [esp+0x2c],eax
+   0x08048735 <+97>:	mov    eax,DWORD PTR [esp+0x1c]
+   0x08048739 <+101>:	add    eax,0x4
+   0x0804873c <+104>:	mov    eax,DWORD PTR [eax]
+   0x0804873e <+106>:	mov    DWORD PTR [esp+0x4],0x4
+   0x08048746 <+114>:	mov    DWORD PTR [esp],eax
+   0x08048749 <+117>:	call   0x80485e0 <access@plt>		| call "access"
+   0x0804874e <+122>:	test   eax,eax						| if rtn_access && rtn_access
+   0x08048750 <+124>:	jne    0x8048940 <main+620>			
+   0x08048756 <+130>:	mov    eax,0x8048a7b				| rtn acces != -1
+   0x0804875b <+135>:	mov    edx,DWORD PTR [esp+0x2c]
+   0x0804875f <+139>:	mov    DWORD PTR [esp+0x4],edx
+   0x08048763 <+143>:	mov    DWORD PTR [esp],eax
+   0x08048766 <+146>:	call   0x8048520 <printf@plt>		| call "printf"
+   0x0804876b <+151>:	mov    eax,ds:0x804a060
+   0x08048770 <+156>:	mov    DWORD PTR [esp],eax
+   0x08048773 <+159>:	call   0x8048530 <fflush@plt>		| call "flush"
+   0x08048778 <+164>:	mov    DWORD PTR [esp+0x8],0x0
+   0x08048780 <+172>:	mov    DWORD PTR [esp+0x4],0x1
+   0x08048788 <+180>:	mov    DWORD PTR [esp],0x2
+   0x0804878f <+187>:	call   0x80485f0 <socket@plt>		| call "socket"
+   0x08048794 <+192>:	mov    DWORD PTR [esp+0x30],eax
+   0x08048798 <+196>:	lea    eax,[esp+0x103c]
+   0x0804879f <+203>:	mov    DWORD PTR [eax],0x0
+   0x080487a5 <+209>:	mov    DWORD PTR [eax+0x4],0x0
+   0x080487ac <+216>:	mov    DWORD PTR [eax+0x8],0x0
+   0x080487b3 <+223>:	mov    DWORD PTR [eax+0xc],0x0
+   0x080487ba <+230>:	mov    WORD PTR [esp+0x103c],0x2
+   0x080487c4 <+240>:	mov    eax,DWORD PTR [esp+0x2c]
+   0x080487c8 <+244>:	mov    DWORD PTR [esp],eax
+   0x080487cb <+247>:	call   0x8048600 <inet_addr@plt>	| call "inet_addr"
+   0x080487d0 <+252>:	mov    DWORD PTR [esp+0x1040],eax
+   0x080487d7 <+259>:	mov    DWORD PTR [esp],0x1b39
+   0x080487de <+266>:	call   0x8048550 <htons@plt>		| call "htons"
+   0x080487e3 <+271>:	mov    WORD PTR [esp+0x103e],ax
+   0x080487eb <+279>:	mov    DWORD PTR [esp+0x8],0x10
+   0x080487f3 <+287>:	lea    eax,[esp+0x103c]
+   0x080487fa <+294>:	mov    DWORD PTR [esp+0x4],eax
+   0x080487fe <+298>:	mov    eax,DWORD PTR [esp+0x30]
+   0x08048802 <+302>:	mov    DWORD PTR [esp],eax
+   0x08048805 <+305>:	call   0x8048610 <connect@plt>		| call "connect"
+   0x0804880a <+310>:	cmp    eax,0xffffffff				| if rtn_connect == NULL
+   0x0804880d <+313>:	jne    0x8048830 <main+348>			| if rtn_connect != NULL jump to "830"
+   0x0804880f <+315>:	mov    eax,0x8048a95				| rtn_access == -1
+   0x08048814 <+320>:	mov    edx,DWORD PTR [esp+0x2c]
+   0x08048818 <+324>:	mov    DWORD PTR [esp+0x4],edx
+   0x0804881c <+328>:	mov    DWORD PTR [esp],eax
+   0x0804881f <+331>:	call   0x8048520 <printf@plt>		| call "printf"
+   0x08048824 <+336>:	mov    DWORD PTR [esp],0x1

